@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Products;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+//initial routing
+Route::get('/', 'App\Http\Controllers\ProductsController@index');
+//product routing
+Route::get('product', 'App\Http\Controllers\ProductsController@index');
+//Cart Routing
+Route::get('cart', 'App\Http\Controllers\ProductsController@cart');
+
+Route::get('add-to-cart/{id}', 'App\Http\Controllers\ProductsController@addToCart');
+//order Routing
+Route::get('order', 'App\Http\Controllers\ProductsController@order');
+
+Route::get('add-to-order/{id}', 'App\Http\Controllers\ProductsController@addToOrder');
